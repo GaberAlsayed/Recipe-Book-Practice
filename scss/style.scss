@@ -1,0 +1,221 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,700,300,400italic,300italic,700italic);
+
+$white: #fafafa;
+$black: #0f0f0f;
+
+$light-gray: lighten($black, 60%);
+$medium-gray: lighten($black, 30%);
+$dark-gray: lighten($black, 15%);
+
+$red: #c02f2f;
+
+:root {
+  font-family: Roboto, sans-serif;
+  font-size: 100%;
+}
+
+* {
+  box-sizing: border-box;
+  line-height: 1.5em;
+}
+
+body {
+  background-color: $white;
+  color: $black;
+  margin: 0;
+  background-color:darkgray;
+  
+}
+
+p {
+  margin: 0;
+}
+
+label, input, textarea {
+  display: block;
+  width: 100%;
+}
+
+.recipe-edit {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(20, 20, 20, 0.5);
+  
+  form {
+    position: absolute;
+    top: 3em;
+    left: 3em;
+    right: 3em;
+    bottom: 3em;
+    background-color: $white;
+    padding: 1em;
+    overflow: auto;
+    
+    small {
+      color: $light-gray;
+    }
+    
+    ul {
+      display:flex;
+      flex-flow: column wrap;
+      list-style: none;
+      padding: 0;
+      
+      li {
+        display: block;
+        marign: 0.5em;
+        
+        label::after {
+          content: ' : ';
+        }
+        
+        .ingredients {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+}
+
+.recipe-book {
+  border: 3px solid $dark-gray;
+  box-shadow: 2px 2px 5px fade-out($dark-gray, 0.5);
+  margin: 1em auto;
+  width: 80vw;
+  border-radius:1em;
+  
+  @media (max-width: 600px) {
+    margin: 0;
+    width: 100vw;
+  }
+}
+
+.recipe-title {
+  background-color: $light-gray;
+  border-bottom: 2px solid $dark-gray;
+  box-shadow: 0px 0.3em 2em fade-out($dark-gray, 0.5);
+  font-size:17px;
+  font-family:Serif;
+   font-weight:bold;
+  h1 {
+    margin: 0;
+    font-size: 1.5em;
+  }
+  
+  a {
+    display: block;
+    padding: 0.5em;
+    text-decoration: none;
+    color: $dark-gray;
+  }
+}
+
+.recipe-card {
+  display: flex;
+  flex-direction: column;
+  
+  &.active .recipe-details {
+    max-height: 2000px;
+  }
+  
+  footer {
+    display: flex;
+    width: 100%;
+    border-top: 1px solid $light-gray;
+    justify-content: center;
+    text-align: right;
+  }
+  
+  @media (max-width: 800px) {
+    font-size: 14px;
+  }
+}
+
+.recipe-top-controls {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+  padding: 0.5em 1em;
+  justify-content: space-around;
+  
+  button: {
+    flex: 1 0 auto;
+  }
+}
+
+.recipe-search-box {
+  flex: 2 0 auto;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  width: auto;
+  border-radius: 0.5em;
+  border: 2px solid $medium-gray;
+  box-shadow: 
+    inset 2px 2px 3px fade-out($dark-gray, 0.7);
+  
+  &:focus {
+    outline: none;
+  }
+}
+
+.recipe-book-title {
+  padding: 0 1em;
+  color:darkred;
+  font-style:oblique;
+  margin-top:12px;
+  h1 {
+    margin: 0;
+  }
+}
+
+footer, a, button {
+  padding: 0.5em;
+  margin: 0.5em;
+}
+
+.button, button {
+  border-radius: 0.5em;
+  color: $black;
+  text-decoration: none;
+  border: 2px solid $dark-gray;
+  box-shadow: 2px 2px 5px fade-out($black, 0.5);
+  
+  &:hover {
+    box-shadow: 1px 1px 1px fade-out($black, 0.5);
+  }
+}
+
+.danger {
+  background-color: $red;
+  border: 2px solid darken($red, 15%);
+}
+
+
+.recipe-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-height: 0;
+  overflow: hidden;
+  transition: 400ms ease-in-out;
+  
+  section {
+    width: 33%;
+    padding: 0.5em;
+    margin: 1em;
+  }
+  
+  @media (max-width: 800px) {
+    display: block;
+    
+    section {
+      width: auto;
+      margin: 0;
+    }
+  }
+}
